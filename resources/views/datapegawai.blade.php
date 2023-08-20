@@ -43,8 +43,8 @@
                         <td>{{ $row->no_telp }}</td>
                         <td>{{ $row->created_at->diffForHumans(); }}</td>
                         <td>
-                            <button type="button" class="btn btn-warning">Edit</button>
-                            <button type="button" class="btn btn-danger">Hapus</button>
+                            <a href="tampilkandata/{{ $row->id }}" class="btn btn-warning">Edit</a>
+                            <a href="#" class="btn btn-danger">Hapus</a>
                         </td>
                       </tr>      
                     @endforeach

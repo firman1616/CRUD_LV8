@@ -35,16 +35,19 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @php
+                      $x=1;
+                  @endphp
                     @foreach ($data as $row)
                      <tr>
-                        <th scope="row">{{ $row->id }}</th>
+                        <th scope="row">{{ $x++ }}</th>
                         <td>{{ $row->nama }}</td>
                         <td>{{ $row->jenis_kelamin }}</td>
                         <td>{{ $row->no_telp }}</td>
                         <td>{{ $row->created_at->diffForHumans(); }}</td>
                         <td>
                             <a href="tampilkandata/{{ $row->id }}" class="btn btn-warning">Edit</a>
-                            <a href="#" class="btn btn-danger">Hapus</a>
+                            <a href="delete/{{ $row->id }}" class="btn btn-danger">Hapus</a>
                         </td>
                       </tr>      
                     @endforeach

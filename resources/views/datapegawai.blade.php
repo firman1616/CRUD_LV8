@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="
+        https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css
+        " rel="stylesheet">
 
     <title>CRUD LARAVEL</title>
 </head>
@@ -19,11 +22,11 @@
     <div class="container">
         <a href="/tambahpegawai" class="btn btn-info">Tambah Data</a>
 
-        @if ($message = Session::get('success'))
+        {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success" role="alert">
                 {{ $message }}
             </div>
-        @endif
+        @endif --}}
         <div class="row">
 
             <table class="table">
@@ -73,6 +76,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -110,6 +114,12 @@
             }
         })
     })
+</script>
+
+<script>
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}", 'Congrats');
+    @endif
 </script>
 
 </html>

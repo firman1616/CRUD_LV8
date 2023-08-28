@@ -21,6 +21,18 @@
 
     <div class="container">
         <a href="/tambahpegawai" class="btn btn-info">Tambah Data</a>
+        <br><br>
+        <div class="row g-3 align-items-center">
+
+            <div class="col-auto">
+                <form action="/pegawai" method="get">
+                    <input type="search" name="search" id="cari" class="form-control"
+                        aria-describedby="passwordHelpInline">
+                </form>
+            </div>
+        </div>
+        <br>
+        <a href="/exportpdf" class="btn btn-success">Export PDF</a>
 
         {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success" role="alert">
@@ -45,9 +57,9 @@
                     @php
                         $x = 1;
                     @endphp
-                    @foreach ($data as $row)
+                    @foreach ($data as $index => $row)
                         <tr>
-                            <th scope="row">{{ $x++ }}</th>
+                            <th scope="row">{{ $index + $data->firstItem() }}</th>
                             <td>{{ $row->nama }}</td>
                             <td><img src="{{ asset('fotopegawai/' . $row->foto) }}" style="width: 40px"></td>
                             <td>{{ $row->jenis_kelamin }}</td>
@@ -63,6 +75,7 @@
 
                 </tbody>
             </table>
+            {{ $data->links() }}
         </div>
     </div>
 

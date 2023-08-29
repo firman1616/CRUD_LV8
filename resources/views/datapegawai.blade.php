@@ -33,6 +33,7 @@
         </div>
         <br>
         <a href="/exportpdf" class="btn btn-success">Export PDF</a>
+        <a href="/exportexcel" class="btn btn-success">Export Excel</a>
 
         {{-- @if ($message = Session::get('success'))
             <div class="alert alert-success" role="alert">

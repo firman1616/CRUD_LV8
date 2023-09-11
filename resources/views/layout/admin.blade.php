@@ -205,7 +205,7 @@
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block">{{ Auth::user()->name}}</a>
                     </div>
                 </div>
 
@@ -242,6 +242,14 @@
                                 <i class="nav-icon fas fa-th"></i>
                                 <p>
                                     Pegawai
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/logout" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Logout
                                 </p>
                             </a>
                         </li>

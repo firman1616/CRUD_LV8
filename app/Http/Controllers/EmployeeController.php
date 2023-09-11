@@ -7,6 +7,8 @@ use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Exports\EmployeeExport;
 use App\Imports\EmployeeImport;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Maatwebsite\Excel\Facades\Excel;
 
 class EmployeeController extends Controller
@@ -15,8 +17,10 @@ class EmployeeController extends Controller
     {
         if ($request->has('search')) {
             $data = Employee::where('nama', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            Session::put('halaman_url',request()->fullUrl());
         } else {
             $data = Employee::paginate(5);
+            Session::put('halaman_url',request()->fullUrl());
         }
 
         return view("datapegawai", compact('data'));
@@ -50,6 +54,9 @@ class EmployeeController extends Controller
     {
         $data = Employee::find($id);
         $data->update($request->all());
+        if (session('halaman_url')) {
+            return Redirect(session('halaman_url'))->with('success', 'Data Berhasil Di Update');
+        }
         return redirect()->route('pegawai')->with('success', 'Data Berhasil Di Update');
     }
 
